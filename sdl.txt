@@ -1,0 +1,3457 @@
+相关文件 SDL2/SDL.h    
+ 
+功能:初始化SDL
+参数: 
+flags 系统名称，取值如下
+SDL_INIT_TIMER
+　　定时器子系统
+　　SDL_INIT_AUDIO
+　　音频子系统
+　　SDL_INIT_VIDEO
+　　视频子系统
+　　SDL_INIT_JOYSTICK
+　　操纵杆子系统
+　　SDL_INIT_HAPTIC
+　　触屏反馈子系统
+　　SDL_INIT_GAMECONTROLLER
+　　控制器子系统
+　　SDL_INIT_EVENTS
+　　事件子系统
+　　SDL_INIT_EVERYTHING
+　　上述所有子系统
+　　SDL_INIT_NOPARACHUTE
+　　不致命的信号
+返回值:
+成功返回0
+失败返回 -1
+原型:
+int SDL_Init(Uint32 flags)
+    
+ 
+功能:初始化SDL子系统
+参数:
+flags 系统名称
+同SDL_Init()
+返回值:
+成功返回0
+失败返回 -1
+原型:
+int SDL_InitSubSystem(Uint32 flags)
+    
+ 
+功能:退出SDL
+参数 : 无
+返回值 : 无
+原型:
+void SDL_Quit(void)
+    
+ 
+功能:退出系统
+参数:
+flags 系统名称
+同SDL_Init()
+返回值: 无
+原型:
+void SDL_QuitSubSystem(Uint32 flags)
+    
+ 
+功能:检测系统是否启动
+参数:
+flags同SDL_Init()
+返回值:
+成功返回0
+失败返回 SDL_INIT_NOPARACHUTE.
+原型:
+Uint32 SDL_WasInit(Uint32 flags)
+ 
+    
+相关文件 SDL2/SDL_hints.h    
+函数名:SDL_ClearHints
+功能:清空所有提示
+参数:无
+返回值:无
+备注:
+原型:void SDL_ClearHints(void)
+    
+函数名: SDL_GetHint
+功能:获取一个提示
+参数:
+name 提示名称
+返回值: 提示名称所代表的内容
+备注:
+原型:
+const char* SDL_GetHint(const char* name)
+    
+函数名:SDL_SetHint
+功能:设置提示
+参数:
+name 提示名称
+value 提示内容
+返回值: 
+成功返回SDL_TRUE
+失败返回 SDL_FALSE
+备注:
+原型:
+SDL_bool SDL_SetHint(const char* name, const char* value)
+    
+函数名:SDL_SetHintWithPriority
+功能:设置提示优先级
+参数:
+name 提示名称
+value 提示内容
+priority 优先级
+SDL_HINT_DEFAULT
+　　低优先级,使用默认值
+　　SDL_HINT_NORMAL
+　　中优先级
+　　SDL_HINT_OVERRIDE
+　　高优先级
+返回值:
+成功返回SDL_TRUE
+失败返回 SDL_FALSE
+备注:
+原型:
+SDL_bool SDL_SetHintWithPriority(const char* name, const char* value, SDL_HintPriority priority)
+ 
+    
+相关文件 SDL2/SDL_error.h    
+函数名: SDL_ClearError
+功能:清空所有错误提示
+参数:无
+返回值:无
+备注:
+原型:
+void SDL_ClearError(void)
+    
+函数名: SDL_GetError
+功能:获取一个错误提示
+参数:无
+返回值:提示内容
+备注:
+原型:
+const char* SDL_GetError(void)
+    
+函数名:SDL_SetError
+功能:设置错误提示
+参数:　
+fmt printf()风格消息格式字符串
+返回值:-1
+备注:
+原型:
+int SDL_SetError(const char* fmt, ...)
+    
+函数名:
+SDL_CreateWindowAndRenderer
+功能:给窗口配置渲染器
+参数:
+width 窗口宽
+height 窗口高
+window 窗口指针
+renderer 渲染器指针
+返回值:
+备注:
+原型:
+int SDL_CreateWindowAndRenderer(int width,
+int height,
+Uint32 window_flags,
+SDL_Window** window,
+SDL_Renderer** renderer)
+    
+函数名:SDL_CreateWindowFrom
+功能:从现有的窗口创建sdl窗口
+参数:data 窗口指针
+返回值:sdl窗口指针
+备注:
+原型:
+SDL_Window* SDL_CreateWindowFrom(const void* data)
+例子:
+//用mfc窗口句柄创建一个sdl window
+SDL_Window * pWindow = 
+SDL_CreateWindowFrom( (void *)( 
+GetDlgItem(IDC_STATIC1)-&gt;GetSafeHwnd() ) );
+    
+函数名:SDL_DestroyWindow
+功能:销毁一个窗口
+参数:
+window 窗口指针
+返回值:无
+备注:
+原型:
+void SDL_DestroyWindow(SDL_Window* window)
+    
+函数名:SDL_DisableScreenSaver
+功能:禁止屏幕储存
+参数:
+返回值:
+备注: 
+原型:
+void SDL_DisableScreenSaver(void)
+    
+函数名:SDL_EnableScreenSaver
+功能:允许屏幕储存
+参数:
+返回值:
+备注:
+原型:
+void SDL_EnableScreenSaver(void)
+    
+函数名:SDL_GetClosestDisplayMode
+功能:获得最接近的匹配请求的显示模式。
+参数:
+displayIndex索引
+mode 显示模式
+closest 最接近的匹配可用的显示模式
+返回值:
+备注:
+原型:
+SDL_DisplayMode* SDL_GetClosestDisplayMode(int displayIndex,
+const SDL_DisplayMode* mode,
+SDL_DisplayMode* closest)
+    
+函数名:SDL_GetCurrentDisplayMode
+功能:获得当前的显示模式的信息
+参数:
+displayIndex索引
+mode 显示模式
+返回值:
+成功返回0，失败返回-1
+备注:
+原型:
+int SDL_GetCurrentDisplayMode(int displayIndex,SDL_DisplayMode* mode)
+    
+函数名:SDL_GetCurrentVideoDriver
+功能:获取当前视频驱动
+参数:
+返回值:视频驱动名称
+备注:
+原型:
+const char* SDL_GetCurrentVideoDriver(void)
+    
+函数名:SDL_GetDesktopDisplayMode
+功能:获取关于桌面显示模式的信息
+参数:
+返回值:
+成功返回0
+失败返回 -1
+备注:
+原型:
+int SDL_GetDesktopDisplayMode(int displayIndex,
+SDL_DisplayMode* mode)
+    
+函数名:SDL_GetDisplayBounds
+功能:获取桌面区域显示
+参数:
+返回值:成功 0 失败 -1
+备注:
+原型:
+int SDL_GetDisplayBounds(int displayIndex,
+SDL_Rect* rect)
+    
+函数名: SDL_GetDisplayMode
+功能:获取特定信息显示模式
+参数:
+displayIndex显示查询的索引
+modeIndex查询的索引显示模式
+mode 显示模式
+返回值:
+成功返回0
+失败返回 -1
+备注:
+原型:
+int SDL_GetDisplayMode(int 
+displayIndex,
+int modeIndex,
+SDL_DisplayMode* mode)
+    
+函数名:SDL_GetNumVideoDisplays
+功能:返回可用的视频显示器的数量。
+参数:
+返回值:
+显示器数量
+备注:
+原型:
+int SDL_GetNumVideoDisplays(void)
+ 
+    
+函数名: SDL_GetNumVideoDrivers
+功能:返回可用的视频驱动的数量
+参数:
+返回值:
+驱动数量
+备注:
+原型:
+int SDL_GetNumVideoDrivers(void)
+    
+函数名:SDL_GetVideoDriver
+功能:获取指定索引视频驱动名称
+参数:
+返回值:
+成功返回 名称
+失败返回 空字符串
+备注:
+原型:
+const char* SDL_GetVideoDriver(int index)
+ 
+    
+函数名:SDL_GetWindowBrightness
+功能:获取窗口亮度
+参数:
+返回值:
+0.0 完全黑暗
+1.0正常亮度
+备注:
+原型:
+float SDL_GetWindowBrightness(SDL_Window* window)
+    
+函数名:SDL_GetWindowData
+功能:获取窗口数据
+参数:
+window 窗口指针
+name 名称
+返回值:
+成功返回 窗口数据指针
+失败 NULL
+备注:
+原型:
+void* SDL_GetWindowData(SDL_Window* window,
+const char* name)
+ 
+    
+函数名:SDL_GetWindowDisplayIndex
+功能:获取窗口显示索引
+参数:window 窗口指针
+返回值:显示索引
+备注:
+原型:
+int SDL_GetWindowDisplayIndex(SDL_Window* window)
+ 
+    
+函数名:SDL_GetWindowDisplayMode
+功能:获取窗口显示模式
+参数:
+window 窗口指针
+mode 显示模式
+返回值:0 -1
+备注:
+原型:
+int SDL_GetWindowDisplayMode(SDL_Window* window,
+SDL_DisplayMode* mode)
+    
+函数名:SDL_GetWindowFlags
+功能:获取窗口旗帜
+参数:
+window 窗口指针
+返回值:
+SDL_WINDOW_FULLSCREEN
+　　全屏窗口
+　　SDL_WINDOW_FULLSCREEN_DESKTOP
+　　全屏窗口在当前桌面分辨率
+　　SDL_WINDOW_OPENGL
+　　与OpenGL窗口可用的上下文
+　　SDL_WINDOW_SHOWN
+　　窗口是可见的
+　　SDL_WINDOW_HIDDEN
+　　窗口不可见
+　　SDL_WINDOW_BORDERLESS
+　　没有窗口装饰
+　　SDL_WINDOW_RESIZABLE
+　　窗口可以调整大小
+　　SDL_WINDOW_MINIMIZED
+　　窗口最小化
+　　SDL_WINDOW_MAXIMIZED
+　　窗口最大化
+　　SDL_WINDOW_INPUT_GRABBED
+　　窗口有输入焦点
+　　SDL_WINDOW_INPUT_FOCUS
+　　窗口有输入焦点
+　　SDL_WINDOW_MOUSE_FOCUS
+　　窗口有鼠标焦点
+　　SDL_WINDOW_FOREIGN
+　　不是由SDL的窗口
+备注:
+原型:
+Uint32 SDL_GetWindowFlags(SDL_Window* window)
+    
+函数名称:SDL_GetWindowFromID
+功能:获取指定id窗口
+参数:窗口id
+返回值:
+成功 窗口指针
+失败 NULL
+原型:
+SDL_Window* SDL_GetWindowFromID(Uint32 id)
+    
+函数名称:
+SDL_GetWindowGammaRamp
+功能:获取窗口的颜色
+参数:
+返回值:
+成功返回0
+失败返回 -1
+原型:
+int SDL_GetWindowGammaRamp(SDL_Window* window,
+Uint16* red,
+Uint16* green,
+Uint16* blue)
+    
+函数名称:SDL_GetWindowGrab
+功能:得到一个窗口的输入模式
+参数:window 窗口指针
+返回值:
+成功返回SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_GetWindowGrab(SDL_Window* window)
+    
+函数名称:SDL_GetWindowID
+功能:获取窗口id
+参数:window 窗口指针
+返回值:窗口id
+原型:
+Uint32 SDL_GetWindowID(SDL_Window* window)
+    
+函数名称:
+SDL_GetWindowMinimumSize
+功能:获取窗口最小值
+参数:
+window 窗口指针
+w,h 窗口宽高
+返回值:
+原型:
+void SDL_GetWindowMinimumSize(SDL_Window* window,
+int* w,
+int* h)
+    
+函数名称:
+SDL_GetWindowMaximumSize
+功能:获取窗口最大值
+参数:
+window 窗口指针
+w,h 宽高
+返回值:
+原型:
+void SDL_GetWindowMaximumSize(SDL_Window* window,
+int* w,
+int* h)
+    
+函数名称:SDL_GetWindowPixelFormat
+功能:获取窗口像素格式
+参数:
+返回值:
+成功返回 像素格式
+失败返回SDL_PIXELFORMAT_UNKNOWN
+原型:
+Uint32 SDL_GetWindowPixelFormat(SDL_Window* window)
+    
+函数名称:SDL_GetWindowPosition
+功能:获取窗口坐标
+参数:
+window 窗口指针
+x,y 坐标
+返回值:
+原型:
+void SDL_GetWindowPosition(SDL_Window* window,
+int* x,
+int* y)
+    
+函数名称:SDL_GetWindowSize
+功能:获取窗口大小
+参数:
+window 窗口指针
+w,h 窗口宽高
+返回值:
+原型:
+void SDL_GetWindowSize(SDL_Window* window,
+int* w,
+int* h)
+    
+函数名称:SDL_GetWindowSurface
+功能:获取窗口贴图
+参数:
+window 窗口指针
+返回值:
+成功返回 窗口贴图
+失败返回 NULL
+原型:
+SDL_Surface* SDL_GetWindowSurface(SDL_Window* window)
+    
+函数名称:SDL_GetWindowTitle
+功能:获取窗口标题
+参数:
+window 窗口指针
+返回值:
+成功返回 窗口标题
+失败返回 空字符串
+原型:
+const char* SDL_GetWindowTitle(SDL_Window* window)
+    
+函数名称:SDL_HideWindow
+功能:隐藏窗口
+参数:
+window 窗口指针
+返回值:
+原型:
+void SDL_HideWindow(SDL_Window* window)
+ 
+    
+函数名称:SDL_IsScreenSaverEnabled
+功能:检测屏幕储存是否启用
+参数:
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_IsScreenSaverEnabled(void)
+    
+函数名称:SDL_MaximizeWindow
+功能:窗口最大化
+参数:
+window 窗口指针
+返回值:
+原型:
+void SDL_MaximizeWindow(SDL_Window* window)
+    
+函数名称:SDL_MinimizeWindow
+功能:窗口最小化
+参数:
+window 窗口指针
+返回值:
+原型:
+void SDL_MinimizeWindow(SDL_Window* window)
+    
+函数名称: SDL_RaiseWindow
+功能:提高上方的窗口,设置输入焦点
+参数:
+window 窗口指针
+返回值:
+原型:
+void SDL_RaiseWindow(SDL_Window* window)
+ 
+    
+函数名称:SDL_RestoreWindow
+功能:恢复被最大化或最小化的窗口
+参数:
+window 窗口指针
+返回值:
+原型:
+void SDL_RestoreWindow(SDL_Window* window)
+    
+函数名称:SDL_SetWindowBrightness
+功能:设置窗口亮度
+参数:
+window 窗口指针
+brightness 亮度值(参考 0.0为黑暗，1.0为光亮)
+返回值:
+成功返回 0
+失败返回 -1
+原型:
+int SDL_SetWindowBrightness(SDL_Window* window,
+float brightness)
+ 
+    
+函数名称:SDL_SetWindowDisplayMode
+功能:设置窗口显示模式
+参数:
+window 窗口指针
+mode 显示模式
+返回值:
+成功返回 0
+失败返回 -1
+原型:
+int SDL_SetWindowDisplayMode(SDL_Window* window,
+const SDL_DisplayMode* mode)
+    
+函数名称:SDL_SetWindowFullscreen
+功能:设置窗口全屏状态
+参数:
+window 窗口指针
+flags 旗帜
+SDL_WINDOW_FULLSCREEN, 真全屏SDL_WINDOW_FULLSCREEN_DESKTOP 假全屏(以桌面大小)
+返回值:
+成功返回 0
+失败返回 -1
+原型:
+int SDL_SetWindowFullscreen(SDL_Window* window,
+Uint32 flags)
+ 
+    
+函数名称:
+SDL_SetWindowGammaRamp
+功能:设置窗口的伽马坡道
+参数:
+window 窗口指针
+red,green,blue 红绿蓝
+返回值:
+成功返回 0
+失败返回 -1
+原型:
+int SDL_SetWindowGammaRamp(SDL_Window* window,
+const Uint16* red,
+const Uint16* green,
+const Uint16* blue)
+    
+函数名称:SDL_SetWindowGrab
+功能:设置窗口的输入
+参数:
+window 窗口指针
+grabbed 是否开启
+返回值:
+原型:
+void SDL_SetWindowGrab(SDL_Window* window,
+SDL_bool grabbed)
+    
+函数名称:SDL_SetWindowIcon
+功能:设置窗口小图标
+参数:
+window 窗口指针
+icon 图标贴图
+返回值:
+原型:
+void SDL_SetWindowIcon(SDL_Window* window,
+SDL_Surface* icon)
+    
+函数名称:
+SDL_SetWindowMaximumSize
+功能:设置窗口最大大小
+参数:
+window 窗口指针
+max_w,max_h 最大宽和最大高
+返回值:
+原型:
+void SDL_SetWindowMaximumSize(SDL_Window* window,
+int max_w,
+int max_h)
+    
+函数名称:
+SDL_SetWindowMinimumSize
+功能:设置窗口最小大小
+参数:
+window 窗口指针
+min_w,min_h 最小宽和最小高
+返回值:
+原型:
+void SDL_SetWindowMinimumSize(SDL_Window* window,
+int min_w,
+int min_h)
+    
+函数名称:SDL_SetWindowPosition
+功能:设置窗口位置坐标
+参数:
+window 窗口指针
+x,y 坐标
+返回值:
+原型:
+void SDL_SetWindowPosition(SDL_Window* window,
+int x,
+int y)
+    
+函数名称:SDL_SetWindowSize
+功能:设置窗口大小
+参数:
+window 窗口指针
+w,h 宽，高
+返回值:
+原型:
+void SDL_SetWindowSize(SDL_Window* window,
+int w,
+int h)
+    
+函数名称:SDL_SetWindowTitle
+功能:设置窗口标题
+参数:
+window 窗口指针
+title 标题
+返回值:
+原型:
+void SDL_SetWindowTitle(SDL_Window* window,
+const char* title)
+    
+函数名称:SDL_ShowWindow
+功能:显示窗口
+参数:
+window 窗口指针
+返回值:
+原型:
+void SDL_ShowWindow(SDL_Window* window)
+    
+函数名称:
+SDL_UpdateWindowSurfaceRects
+功能:更新窗口指定区域
+参数:
+window 窗口指针
+rects 矩形局域
+numrects 矩形数量
+返回值:
+成功返回 0
+失败返回 -1
+原型:
+int SDL_UpdateWindowSurfaceRects(SDL_Window* window,const SDL_Rect* 
+rects,int numrects)
+    
+函数名称:SDL_UpdateWindowSurface
+功能:更新窗口
+参数:
+window 窗口指针
+返回值:
+成功返回 0
+失败返回 -1
+原型:
+int SDL_UpdateWindowSurface(SDL_Window* window)
+    
+函数名称:SDL_VideoInit
+功能:初始化视频子系统,可以选择指定的视频驱动程序
+参数:
+driver_name 驱动名称
+返回值:
+成功返回 0
+失败返回 -1
+原型:
+int SDL_VideoInit(const char* 
+driver_name)
+    
+函数名称:SDL_VideoQuit
+功能:结束视频子系统
+参数:
+返回值:
+原型:
+void SDL_VideoQuit(void)
+    
+函数名称:SDL_GetWindowWMInfo
+功能:获取驱动程序特定的信息
+参数:
+window 窗口指针
+info 信息
+返回值:
+成功返回 SDL_TRUE 
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_GetWindowWMInfo(SDL_Window* window,
+SDL_SysWMinfo* info)
+    
+    发几个结构体
+SDL_DisplayMode结构 显示模式
+Uint32 format SDL_PixelFormatEnum值之一
+int w 宽
+int h 高
+int refresh_rate 刷新率
+ 
+ 
+SDL_WindowEvent结构 窗口事件
+Uint32 type 类型
+Uint32 timestamp 时间戳
+Uint32 windowID 窗口ID
+Uint8 event 事件
+Uint8 padding1 填充1
+Uint8 padding2 填充2
+Uint8 padding3 填充3
+Sint32 data1 事件相关数据1
+Sint32 data2 事件相关数据2
+ 
+SDL_RendererInfo结构 渲染器信息
+const char* name 渲染器名称
+Uint32 flags 支持渲染器的"旗帜"
+Uint32 num_texture_formats 纹理格式的数量
+Uint32[16] texture_formats 纹理格式
+int max_texture_width 纹理最大宽
+int max_texture_height 纹理最大高
+SDL_PixelFormat结构 像素格式
+Uint32 format：依据它解析出的uint32_t类型32位值
+SDL_Palette* palette：调色板数据
+Uint8 BitsPerPixel：每像素位数。
+Uint8 BytesPerPixel：每像素字节数。
+Uint8 padding[2]：（对结构对齐而使用的填充字节）
+Uint32 Rmask：32位值，R分量掩码。
+Uint32 Gmask：32位值，G分量掩码。
+Uint32 Bmask：32位值，B分量掩码。
+Uint32 Amask：32位值，A分量掩码。
+Uint8 Rloss：8减去R分量占用位数。
+Uint8 Gloss：8减去G分量占用位数。
+Uint8 Bloss：8减去B分量占用位数。
+Uint8 Aloss：8减去A分量占用位数。
+Uint8 Rshift：Rmask的第一非0位位置。
+Uint8 Gshift：Gmask的第一非0位位置。
+Uint8 Bshift：Bmask的第一非0位位置。
+Uint8 Ashift：Amask的第一非0位位置。
+int refcount：引用计数。分配和释放时使用。
+struct SDL_PixelFormat* next：下一个像素格式结构块。
+ 
+    
+    关联文件 SDL2/SDL_assert.h    
+    每个SDL_ASSERT_LEVEL设置和相应的影响三个SDL_assert功能:
+三个SDL_assert函数:
+SDL_assert
+　　SDL_assert_release
+　 　SDL_assert_paranoid
+SDL_ASSERT_LEVEL值 描述 
+0 禁用 ,禁用，禁用 
+1 禁用，启用，禁用 
+2 启用，启用，禁用
+3 启用，启用，启用
+ 
+SDL_assert_data结构体 断点数据
+int always_ignore 1或0 是否同意用该断点
+unsigned int trigger_count 多少次触发断点
+const char* condition 断点检查条件 
+const char* filename 包含该断点的文件名
+int linenum 断点在文件中的位置
+const char* function 包含断点的函数名
+const struct SDL_assert_data* next 下一个断点
+ 
+    
+函数名称:SDL_SetAssertionHandler
+功能:设置断点处理
+参数:
+返回值:
+备注:
+这个函数允许应用程序来显示自己的断点或强迫响应断点失败。
+处理程序的函数原型:
+　　SDL_assert_state YourAssertionHandler(const SDL_assert_data *data
+　　void *userdata)
+data 一个指针SDL_assert_data结构对应于当前的断点
+userdata 作为用户数据传递给SDL_SetAssertionHandler
+ 
+原型:
+void SDL_SetAssertionHandler(SDL_AssertionHandler handler,
+void* userdata)
+    
+函数名称:SDL_TriggerBreakpoint
+功能:触发断点调试
+参数:
+返回值:
+原型:void SDL_TriggerBreakpoint(void)
+    
+函数名称:SDL_assert
+功能:设置调试断点
+参数:
+返回值:
+原型:
+void SDL_assert(condition)
+    
+函数名称:
+SDL_assert_paranoid
+功能:设置调试paranoid断点
+参数:
+返回值:
+原型:
+void SDL_assert_paranoid(condition)
+    
+函数名称:SDL_assert_release
+功能:设置调试release断点
+参数:
+返回值:
+原型:
+void SDL_assert_release(condition)
+    
+    关联文件 SDL2/SDL_render.h    
+函数名称:
+功能:创建渲染器
+参数:
+返回值:
+原型:
+SDL_Renderer* SDL_CreateRenderer(SDL_Window* window,
+int index,
+Uint32 flags)
+ 
+    
+函数名称:
+功能:创建一个2 d软件渲染表面。
+参数:
+surface 表面指针
+返回值:
+成功 渲染器指针
+失败 NULL
+原型:
+SDL_Renderer* SDL_CreateSoftwareRenderer(SDL_Surface* surface)
+    
+    access 
+SDL_TEXTUREACCESS_STATIC
+　　变化很少,而不是可锁定的
+SDL_TEXTUREACCESS_STREAMING
+　　经常变化,可锁定的
+w,h 宽高
+返回值:
+成功 纹理指针
+失败 请用SDL_GetError() 获取错误信息
+原型:
+SDL_Texture* SDL_CreateTexture(SDL_Renderer* renderer,
+Uint32 format,
+int access, 
+int w,
+int h)
+    
+函数名称:
+功能:创建一个从现有的表面纹理
+参数:
+renderer 渲染器指针
+surface 表面指针
+返回值:
+成功 纹理指针
+失败 请用SDL_GetError() 获取错误信息
+原型:
+SDL_Texture* SDL_CreateTextureFromSurface(SDL_Renderer* renderer,
+SDL_Surface* surface)
+    
+函数名称:
+功能:创建一个窗口并配置渲染器
+参数:
+width 窗口宽
+height 窗口高
+window_flags 参见
+SDL_CreateWindow()
+window 创建的窗口指针
+renderer 渲染器指针
+返回值:
+成功 0
+失败 -1
+原型:
+int SDL_CreateWindowAndRenderer(int width,
+int height,
+Uint32 window_flags,
+SDL_Window** window,
+SDL_Renderer** renderer)
+    
+函数名称:
+功能:销毁一个渲染器
+参数:renderer 渲染器指针
+返回值:
+原型
+void SDL_DestroyRenderer(SDL_Renderer* renderer)
+    
+函数名称:
+功能:销毁一个纹理
+参数: texture 纹理指针
+返回值:
+原型:
+void SDL_DestroyTexture(SDL_Texture* texture)
+    
+函数名称:
+功能:获取渲染器驱动数量
+参数:
+返回值:
+成功 &gt;=1
+原型:
+int SDL_GetNumRenderDrivers(void)
+    
+函数名称:
+功能:获取渲染器绘图混合模式
+参数:
+renderer 渲染器指针
+blendMode
+SDL_BLENDMODE_NONE
+没有混合
+dstRGBA = srcRGBA
+SDL_BLENDMODE_BLEND
+灰度混合
+dstRGB =(srcRGB * srcA)+(dstRGB *(1-srcA))
+dstA = srcA +(dstA *(1-srcA))
+SDL_BLENDMODE_ADD
+添加混合
+dstRGB =(srcRGB * srcA)+ dstRGB
+dstA = dstA
+SDL_BLENDMODE_MOD
+颜色调整
+dstRGB = srcRGB * dstRGB
+dstA = dstA
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_GetRenderDrawBlendMode(SDL_Renderer* renderer,
+SDL_BlendMode* blendMode)
+    
+函数名称:
+功能:获取渲染器绘图颜色
+参数:
+renderer 渲染器指针
+r,g,b,a 红，绿，蓝，灰度(透明度)
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_GetRenderDrawColor(SDL_Renderer* renderer,
+Uint8* r,
+Uint8* g,
+Uint8* b,
+Uint8* a)
+    
+函数名称:
+功能:获取渲染器驱动信息
+参数:
+index 驱动序列
+info 信息，详细参见
+SDL_RendererInfo结构体
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_GetRenderDriverInfo(int index,
+SDL_RendererInfo* info)
+    
+函数名称:
+功能:获取指定窗口的渲染器
+参数:
+window 窗口指针
+返回值:
+成功 渲染器指针
+失败 NULL
+原型
+SDL_Renderer* SDL_GetRenderer(SDL_Window* window)
+    
+函数名称:
+功能:获取纹理灰度(透明度)
+参数:
+texture 纹理指针
+alpha 灰度(透明度)
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_GetTextureAlphaMod(SDL_Texture* texture,
+Uint8* alpha)
+    
+函数名称:
+功能:获取纹理混合模式
+参数:
+texture 纹理指针
+blendMode 混合模式
+SDL_BLENDMODE_NONE
+没有混合
+dstRGBA = srcRGBA
+SDL_BLENDMODE_BLEND
+灰度混合
+dstRGB =(srcRGB * srcA)+(dstRGB *(1-srcA))
+dstA = srcA +(dstA *(1-srcA))
+SDL_BLENDMODE_ADD
+添加混合
+dstRGB =(srcRGB * srcA)+ dstRGB
+dstA = dstA
+SDL_BLENDMODE_MOD
+颜色调整
+dstRGB = srcRGB * dstRGB
+dstA = dstA
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_GetTextureBlendMode(SDL_Texture* texture,
+SDL_BlendMode* blendMode)
+    
+函数名称:
+功能:获取纹理颜色模式
+参数:
+texture 纹理指针
+r,g,b 颜色
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_GetTextureColorMod(SDL_Texture* texture,
+Uint8* r,
+Uint8* g,
+Uint8* b)
+    
+函数名称:
+功能:锁定纹理
+参数:
+texture 纹理指针
+rect 锁定区域，NULL 为整个纹理
+pixels 像素 
+pitch 暂时理解为程度
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_LockTexture(SDL_Texture* texture,
+const SDL_Rect* rect,
+void** pixels,
+int* pitch)
+    
+函数名称:
+功能:查询纹理
+参数:
+texture 纹理指针
+format,access,w,h 参见
+SDL_CreateTexture
+返回值:
+原型:
+int SDL_QueryTexture(SDL_Texture* texture,
+Uint32* format, 
+int* access,
+int* w, 
+int* h)
+    
+函数名称:
+功能:清空渲染器
+参数:
+renderer 渲染器指针
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型
+int SDL_RenderClear(SDL_Renderer* renderer)
+    
+函数名称:
+功能:复制纹理到渲染器
+参数:
+renderer 渲染器指针
+texture 纹理指针
+srcrect 源区域，NULL为整个纹理
+dstrect 目标区域，NULL为整个渲染目标
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderCopy(SDL_Renderer* renderer,
+SDL_Texture* texture,
+const SDL_Rect* srcrect,
+const SDL_Rect* dstrect)
+    
+函数名称:
+功能:复制纹理到指定区域2
+参数:
+renderer 渲染器指针
+texture 纹理指针
+srcrect 源区域，NULL为整个纹理
+dstrect 目标区域，NULL为整个渲染目标
+angle 旋度
+center 中心
+flip 翻转
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderCopyEx(SDL_Renderer* renderer,
+SDL_Texture* texture,
+const SDL_Rect* srcrect,
+const SDL_Rect* dstrect,
+const double angle,
+const SDL_Point *center,
+const SDL_RendererFlip flip);
+    
+函数名称:
+功能:向渲染器绘制一个线段
+参数:
+renderer 渲染器指针
+x1,y1 第一个端点的坐标
+x2,y2 第二个端点的坐标
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderDrawLine(SDL_Renderer* renderer,
+int x1,
+int y1,
+int x2,
+int y2)
+    
+函数名称:
+功能:绘制多个线段
+参数:
+renderer 渲染器指针
+points SDL_Point 数组 点坐标
+count 数组长度
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderDrawLines(SDL_Renderer* renderer,
+const SDL_Point* points,
+int count)
+    
+函数名称:
+功能:绘制一个点
+参数:
+renderer 渲染器指针
+x,y 点坐标
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderDrawPoint(SDL_Renderer* renderer,
+int x, 
+int y)
+    
+函数名称:
+功能:绘制多个点
+参数:
+renderer 渲染器指针
+points SDL_Point 数组 点坐标
+count 数组长度
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型
+int SDL_RenderDrawPoints(SDL_Renderer* renderer,
+const SDL_Point* points,
+int count)
+    
+函数名称:
+功能:绘制一个矩形
+参数:
+renderer 渲染器指针
+rect 矩形，详细参见SDL_Rect结构
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderDrawRect(SDL_Renderer* 
+renderer,
+const SDL_Rect* rect)
+    
+函数名称:
+功能:绘制多个矩形
+参数:
+renderer 渲染器指针
+rects SDL_Rect数组
+count 数组长度
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderDrawRects(SDL_Renderer* renderer,
+const SDL_Rect* rects,
+int count)
+    
+函数名称:
+功能:绘制一个填充矩形
+参数:
+renderer 渲染器指针
+rect 矩形
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderFillRect(SDL_Renderer* renderer,
+const SDL_Rect* rect)
+    
+函数名称:
+功能:绘制多个填充矩形
+参数:
+renderer 渲染器指针
+rects SDL_Rect数组
+count 数组长度
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderFillRects(SDL_Renderer* renderer,
+const SDL_Rect* rects,
+int count)
+ 
+    
+函数名称:
+功能:获取渲染器剪切区域
+参数:
+renderer 渲染器指针
+rect 矩形区域
+返回值:
+原型:
+void SDL_RenderGetClipRect(SDL_Renderer* renderer,
+SDL_Rect* rect);
+ 
+    
+函数名称:
+功能:获取绘图区域绘制当前目标
+参数:
+renderer 渲染器指针
+rect 矩形区域
+返回值:
+原型
+void SDL_RenderGetViewport(SDL_Renderer* renderer,
+SDL_Rect* rect)
+ 
+    
+函数名称:
+功能:更新屏幕
+参数:
+返回值:
+原型:
+void SDL_RenderPresent(SDL_Renderer* renderer)
+    
+函数名称:
+功能:读取渲染器区域像素
+参数:
+renderer 渲染器指针
+rect 读取区域
+format 格式
+pixels 像素
+pitch 像素间距
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderReadPixels(SDL_Renderer* renderer,
+const SDL_Rect* rect,
+Uint32 format,
+void* pixels,
+int pitch)
+    
+函数名称:
+功能:设置渲染器剪切区域
+参数:
+renderer 渲染器指针
+rect 剪切区域
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderSetClipRect(SDL_Renderer* renderer,
+const SDL_Rect* rect);
+    
+函数名称:
+功能:设置绘图区域绘制当前目标
+参数:
+renderer 渲染器指针
+rect 绘图区域
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_RenderSetViewport(SDL_Renderer* renderer,
+const SDL_Rect* rect)
+    
+函数名称:
+功能:设置渲染器绘制混合模式
+参数:
+renderer 渲染器指针
+blendMode 混合模式
+SDL_BLENDMODE_NONE
+没有混合
+dstRGBA = srcRGBA
+SDL_BLENDMODE_BLEND
+透明混合
+dstRGB =(srcRGB * srcA)+(dstRGB *(1-srcA))
+dstA = srcA +(dstA *(1-srcA))
+SDL_BLENDMODE_ADD
+添加混合
+dstRGB =(srcRGB * srcA)+ dstRGB
+dstA = dstA
+SDL_BLENDMODE_MOD
+颜色调整
+dstRGB = srcRGB * dstRGB
+dstA = dstA
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_SetRenderDrawBlendMode(SDL_Renderer* renderer,
+SDL_BlendMode blendMode)
+    
+函数名称:
+功能:设置绘制颜色
+参数:
+renderer 渲染器指针
+r,g,b,a 红，绿，蓝，透明度
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型
+int SDL_SetRenderDrawColor(SDL_Renderer* renderer,
+Uint8 r,
+Uint8 g,
+Uint8 b,
+Uint8 a)
+    
+函数名称:
+功能:设置一个纹理作为当前渲染目标
+参数:
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_SetRenderTarget(SDL_Renderer *renderer,
+SDL_Texture *texture)
+    
+函数名称:
+功能:设置纹理透明度
+参数:
+texture 纹理指针
+alpha 透明度
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_SetTextureAlphaMod(SDL_Texture* texture,
+Uint8 alpha)
+    
+函数名称:
+功能:设置纹理混合模式
+参数:
+texture 纹理指针
+blendMode 混合模式
+ 
+SDL_BLENDMODE_NONE
+没有混合
+dstRGBA = srcRGBA
+SDL_BLENDMODE_BLEND
+透明混合
+dstRGB =(srcRGB * srcA)+(dstRGB *(1-srcA))
+dstA = srcA +(dstA *(1-srcA))
+SDL_BLENDMODE_ADD
+添加混合
+dstRGB =(srcRGB * srcA)+ dstRGB
+dstA = dstA
+SDL_BLENDMODE_MOD
+颜色调整
+dstRGB = srcRGB * dstRGB
+dstA = dstA
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_SetTextureBlendMode(SDL_Texture* texture,
+SDL_BlendMode blendMode)
+    
+函数名称:
+功能:设置纹理颜色模式
+参数:
+texture 纹理指针
+r,g,b 颜色
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型:
+int SDL_SetTextureColorMod(SDL_Texture* texture,
+Uint8 r,
+Uint8 g,
+Uint8 b)
+    
+函数名称:
+功能:解锁纹理
+参数:texture 纹理指针
+返回值:
+原型:
+void SDL_UnlockTexture(SDL_Texture* texture)
+    
+函数名称:
+功能:更新纹理
+参数:
+texture 纹理指针
+rect 区域
+pixels 像素
+pitch 像素间距
+返回值:
+成功返回 0
+失败 用 SDL_GetError() 获取
+原型
+int SDL_UpdateTexture(SDL_Texture* texture,
+const SDL_Rect* rect,
+const void* pixels,
+int pitch)
+    
+    宏
+像素格式宏
+SDL_PIXELTYPE(format)
+像素的类型格式
+SDL_PIXELORDER(format)
+ 
+位像素格式
+SDL_PIXELLAYOUT(format)
+ 
+通道像素格式的位模式
+SDL_BITSPERPIXEL(format)
+ 
+像素颜色信息
+SDL_BYTESPERPIXEL(format)
+ 
+一个像素的字节数
+SDL_ISPIXELFORMAT_INDEXED(format)
+ 
+适用于像素格式的调色板
+SDL_ISPIXELFORMAT_ALPHA(format)
+ 
+alpha通道的像素格式
+SDL_ISPIXELFORMAT_FOURCC(format)
+ 
+适用于像素格式代表独特的格式,例如YUV格式
+ 
+常量
+像素格式的值
+SDL_PIXELFORMAT_UNKNOWN
+SDL_PIXELFORMAT_INDEX1LSB
+SDL_PIXELFORMAT_INDEX1MSB
+SDL_PIXELFORMAT_INDEX4LSB
+SDL_PIXELFORMAT_INDEX4MSB
+SDL_PIXELFORMAT_INDEX8
+SDL_PIXELFORMAT_RGB332
+SDL_PIXELFORMAT_RGB444
+SDL_PIXELFORMAT_RGB555
+SDL_PIXELFORMAT_BGR555
+SDL_PIXELFORMAT_ARGB4444
+SDL_PIXELFORMAT_RGBA4444
+SDL_PIXELFORMAT_ABGR4444
+SDL_PIXELFORMAT_BGRA4444
+SDL_PIXELFORMAT_ARGB1555
+SDL_PIXELFORMAT_RGBA5551
+SDL_PIXELFORMAT_ABGR1555
+SDL_PIXELFORMAT_BGRA5551
+SDL_PIXELFORMAT_RGB565
+SDL_PIXELFORMAT_BGR565
+SDL_PIXELFORMAT_RGB24
+SDL_PIXELFORMAT_BGR24
+SDL_PIXELFORMAT_RGB888
+SDL_PIXELFORMAT_RGBX8888
+SDL_PIXELFORMAT_BGR888
+SDL_PIXELFORMAT_BGRX8888
+SDL_PIXELFORMAT_ARGB8888
+SDL_PIXELFORMAT_RGBA8888
+SDL_PIXELFORMAT_ABGR8888
+SDL_PIXELFORMAT_BGRA8888
+SDL_PIXELFORMAT_ARGB2101010
+SDL_PIXELFORMAT_YV12
+SDL_PIXELFORMAT_IYUV
+SDL_PIXELFORMAT_YUY2
+SDL_PIXELFORMAT_UYVY
+SDL_PIXELFORMAT_YVYU
+ 
+结构体
+SDL_Color
+Uint8 r 红色 取值范围0-255
+Uint8 g绿色 取值范围 0-255
+Uint8 b蓝色 取值范围0-255
+Uint8 a透明度 取值范围 0-255
+ 
+SDL_Palette
+int ncolors 调色板颜色数量，数组长度
+SDL_Color* colors 颜色数组
+Uint32 version 内部使用，不翻译
+int refcount 内部使用，不翻译
+ 
+    
+ 
+功能:创建一个SDL_Palette 结构对应调色板
+参数:ncolors 颜色数量
+返回值:
+成功 参见SDL_Palette结构
+失败 NULL
+备注:调色板初始化为白色的
+原型:
+SDL_Palette* SDL_AllocPalette(int ncolors)
+    
+ 
+功能:计算256伽马值
+参数:
+gamma 伽马值 0.0~1.0
+ramp 一个数组存放的是需要正的梯度 长度256
+返回值:
+原型:
+void SDL_CalculateGammaRamp(float gamma,
+Uint16* ramp)
+    
+ 
+功能:释放一个由SDL_AllocFormat创建的像素格式
+参数:format 像素格式指针 
+返回值:
+原型:
+void SDL_FreeFormat(SDL_PixelFormat* format)
+    
+ 
+功能:释放一个调色板
+参数:palette 调色板指针
+返回值:
+原型:
+void SDL_FreePalette(SDL_Palette* palette)
+    
+ 
+功能:获取像素格式对应名称
+参数:
+format参见常量 像素格式的值
+返回值:
+成功 名称字符串
+失败 SDL_PIXELFORMAT_UNKNOWN
+原型:
+const char* SDL_GetPixelFormatName(Uint32 format)
+    
+ 
+功能:获取一个像素的RGB值
+参数:
+pixel 像素值
+format 格式
+r,g,b 颜色
+返回值:
+原型:
+void SDL_GetRGB(Uint32 pixel,
+const SDL_PixelFormat* format,
+Uint8* r, 
+Uint8* g, 
+Uint8* b)
+    
+ 
+功能:获取一个像素的RGB值
+参数:
+部分同上
+a 透明度
+返回值:
+原型:
+void SDL_GetRGBA(Uint32 pixel,
+const SDL_PixelFormat* format,
+Uint8* r,
+Uint8* g,
+Uint8* b,
+Uint8* a)
+    
+ 
+功能:将RGB值映射到一个像素格式
+参数:
+format 像素格式 ，详细参见SDL_PixelFormat结构体
+r,g,b 颜色
+返回值:
+如果这个像素格式有一个8位索引，则返回匹配的调色板
+如果这个像素格式有灰度，将返回1
+如果这个像素格式bpp(颜色深度)小于32-bpp,将忽略返回值
+原型:
+Uint32 SDL_MapRGB(const SDL_PixelFormat* format,
+Uint8 r, 
+Uint8 g, 
+Uint8 b)
+    
+ 
+功能:获取一个像素的RGBA值
+参数:
+部分同上函数
+a 灰度(透明度)
+返回值:
+返回的像素值最接近给定的RGBA颜色值的格式
+如果指定的像素格式没有灰度值，返回将被忽略
+如果这个像素格式有一个8位索引，则返回匹配的调色板
+如果这个像素格式bpp(颜色深度)小于32-bpp,将忽略返回值
+原型:
+Uint32 SDL_MapRGBA(const SDL_PixelFormat* format,
+Uint8 r, 
+Uint8 g, 
+Uint8 b,
+Uint8 a)
+    
+ 
+功能:用bpp值和RGBA值来获得像素格式
+参数:
+bpp 颜色深度
+Rmask R分量掩码
+Gmask G分量掩码
+Bmask B分量掩码
+Amask A分量掩码
+返回值:
+参见上面的 像素格式的值
+原型:
+Uint32 SDL_MasksToPixelFormatEnum(int bpp,
+Uint32 Rmask,
+Uint32 Gmask,
+Uint32 Bmask,
+Uint32 Amask)
+    
+ 
+功能:获取像素格式的值的颜色深度和RGBA值
+参数:
+format 参见上面的 像素格式的值 常量
+bpp颜色深度
+Rmask Gmask Bmask Amask 颜色分量掩码
+返回值:
+成功 SDL_TURE
+失败 SDL_FALSE
+原型:
+SDL_bool SDL_PixelFormatEnumToMasks(Uint32 format,
+int* bpp,
+Uint32* Rmask,
+Uint32* Gmask,
+Uint32* Bmask,
+Uint32* Amask)
+    
+ 
+功能:设置调色板的颜色
+参数:
+palette 调色板
+colors 颜色数组
+firstcolor 第一个颜色
+ncolors 颜色数组长度
+返回值:
+成功 0
+失败 用SDL_GetError() 获取错误信息
+原型:
+int SDL_SetPaletteColors(SDL_Palette* palette,
+const SDL_Color* colors,
+int firstcolor,
+int ncolors)
+    
+ 
+功能 为一个像素格式配置调色板
+参数:
+format 像素格式
+palette 调色板
+返回值:
+成功 0
+失败 用SDL_GetError() 获取错误信息
+原型:
+int SDL_SetPixelFormatPalette(SDL_PixelFormat* format,
+SDL_Palette* palette)
+    
+    关联文件 SDL2/SDL_rect.h    
+    结构体
+SDL_Point
+int x 横坐标
+int y 纵坐标
+ 
+SDL_Rect
+int x 横坐标
+int y 纵坐标
+int w 宽
+int h 高
+    
+ 
+功能:检测矩形A与矩形B是否碰撞
+参数:
+A 矩形A
+B 矩形B
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_HasIntersection(const SDL_Rect* A,
+const SDL_Rect* B)
+    
+ 
+功能:矩形A矩形B相交区域
+A 矩形A
+B 矩形B
+result 相交区域
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_IntersectRect(const SDL_Rect* A,
+const SDL_Rect* B,
+SDL_Rect* result)
+    
+ 
+功能:计算最小矩形封闭的点的集合
+参数:
+points 点集，数组
+count 数组长度
+clip 用于剪切区域内的点,NULL 所有点
+result 结果矩形
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_EnclosePoints(const SDL_Point* points,
+int count,
+const SDL_Rect* clip,
+SDL_Rect* result)
+    
+ 
+功能:检测线段与矩形是否碰撞
+参数:
+rect 矩形
+x1,y1,x2,y2 线段坐标
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_IntersectRectAndLine(const SDL_Rect* rect,
+int* X1,
+int* Y1,
+int* X2,
+int* Y2)
+    
+ 
+功能:检查矩形是否为空
+参数:r 矩形
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_RectEmpty(const SDL_Rect* r)
+    
+ 
+功能:合并两个矩形
+参数:
+A 矩形A
+B 矩形B
+result 结果矩形
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+void SDL_UnionRect(const SDL_Rect* A,
+const SDL_Rect* B,
+SDL_Rect* result)
+    
+ 
+功能:检查两个矩形是否相等
+参数:
+a 矩形a
+b 矩形b
+返回值:
+成功返回 SDL_TRUE
+失败返回 SDL_FALSE
+原型:
+SDL_bool SDL_RectEquals(const SDL_Rect* a,
+const SDL_Rect* b)
+    
+    关联文件 SDL2/SDL_surface.h    
+    结构体
+ 
+ 
+SDL_Surface
+Uint32 flags (内部使用)
+SDL_PixelFormat* format 像素格式，
+详细请看SDL_PixelFormat结构体(只读)
+int w, h 宽，高 (只读)
+int pitch 像素间距(只读)
+void* pixels 像素(读写)
+void* userdata 用户数据(读写)
+int locked 锁定(内部使用)
+void* lock_data 锁数据 (内部使用)
+SDL_Rect clip_rect剪切区域 (只读)
+SDL_!BlitMap* map (内部使用)
+int refcount 引用计数
+    
+    函数部分
+功能:实现缩放表面复制到目标表面
+参数:
+src 源表面指针
+srcrect 源区域
+dst 目标表面
+dstrect 目标区域
+返回值:
+成功 0
+失败 请用SDL_GetError() 获取错误信息
+原型:
+int BlitScaled(SDL_Surface* src,
+const SDL_Rect* srcrect,
+SDL_Surface* dst,
+SDL_Rect* dstrect)
+    
+ 
+功能:可进行快速表面复制到目标表面
+参数:
+src 源表面指针
+srcrect 源区域
+dst 目标表面
+dstrect 目标区域
+返回值:
+成功 0
+失败 请用SDL_GetError() 获取错误信息
+原型:
+int SDL_BlitSurface(SDL_Surface* src,
+const SDL_Rect* srcrect,
+SDL_Surface* dst,
+SDL_Rect* dstrect)
+    
+ 
+功能:以一种格式的像素块复制到另一种格式
+参数:
+width 以像素为单位的块的宽度
+height 以像素为单位的块的高度 
+src_format 源像素的格式
+src 一个指向源像素的指针
+src_pitch 复制该块的间距
+dst_format 目标像素的格式
+dst 填充了新的象素数据的指针
+dst_pitch 目标块的间距
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+原型:
+int SDL_ConvertPixels(int width,
+int height,
+Uint32 src_format,
+const void* src,
+int src_pitch,
+Uint32 dst_format,
+void* dst,
+int dst_pitch)
+    
+ 
+功能:将表面传送到指定的像素格式的表面进行优化
+参数:
+src 源表面
+fmt 像素格式
+flags 未被使用，应置为0
+返回值:
+成功 优化后的表面指针
+失败 NULL
+原型:
+SDL_Surface* SDL_ConvertSurface(SDL_Surface* src,
+const SDL_PixelFormat* fmt,
+Uint32 flags)
+    
+ 
+功能:将现有的表面复制到指定格式的新的表面
+参数:
+src 源表面指针
+pixel_format 像素格式，取值参考 像素格式的值 常量
+flags 设置为0既可
+返回值:
+原型:
+SDL_Surface* SDL_ConvertSurfaceFormat(SDL_Surface* src,
+Uint32 pixel_format,
+Uint32 flags)
+    
+ 
+功能:创建一个RGB表面
+参数:
+flags 设置为0既可
+width,height 宽，高
+depth 颜色深度
+Rmask Gmask Bmask Amask 颜色掩码
+返回值:
+成功 表面指针
+失败 NULL
+原型:
+SDL_Surface* SDL_CreateRGBSurface(Uint32 flags,
+int width,
+int height,
+int depth,
+Uint32 Rmask,
+Uint32 Gmask,
+Uint32 Bmask,
+Uint32 Amask)
+    
+ 
+功能:绘制多个填充矩形
+参数:
+dst 绘制表面
+rects 矩形数组，参见SDL_Rect结构体
+count 数组长度
+color 颜色，可以通过SDL_MapRGB（）或SDL_MapRGBA（）被生成。
+返回值:
+原型:
+int SDL_FillRects(SDL_Surface* dst,
+const SDL_Rect* rects,
+int count,
+Uint32 color)
+    
+ 
+功能:释放一个表面
+参数:
+surface 表面指针
+返回值:
+原型:
+void SDL_FreeSurface(SDL_Surface* surface)
+    
+ 
+功能:获得的裁剪的矩形表面
+参数:
+surface 表面指针
+rect 裁剪矩形
+返回值:
+原型:
+void SDL_GetClipRect(SDL_Surface* surface,
+SDL_Rect* rect)
+    
+ 
+功能:获取表面的颜色键(透明度)
+参数:
+surface 表面指针
+key 颜色键指针
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:颜色键是用表面上的格式的一个象素，由SDL_MapRGB（）作为生成的。
+原型:
+int SDL_GetColorKey(SDL_Surface* surface,
+Uint32* key)
+    
+ 
+功能:获取表面透明度
+参数:
+surface 表面指针
+alpha 透明度指针
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_GetSurfaceAlphaMod(SDL_Surface* surface,
+Uint8* alpha)
+    
+ 
+功能:获得用于位块传输操作的混合模式
+参数:
+surface 表面指针
+blendMode 混合模式
+SDL_BLENDMODE_NONE 无混合
+dstRGBA = srcRGBA
+SDL_BLENDMODE_BLEND 透明混合
+dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))
+dstA = srcA + (dstA * (1-srcA))
+SDL_BLENDMODE_ADD 添加混合
+dstRGB = (srcRGB * srcA) + dstRGB
+dstA = dstA
+SDL_BLENDMODE_MOD 颜色混合
+dstRGB = srcRGB * dstRGB
+dstA = dstA
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_GetSurfaceBlendMode(SDL_Surface* surface,
+SDL_BlendMode* blendMode)
+    
+ 
+功能:获得表面的颜色值
+参数:
+surface 表面指针
+r,g,b 颜色指针
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_GetSurfaceColorMod(SDL_Surface* surface,
+Uint8* r,
+Uint8* g,
+Uint8* b)
+    
+ 
+功能:加载一张bmp图片
+参数:
+file 文件
+返回值:
+成功 表面指针
+失败 NULL
+备注:
+原型:
+SDL_Surface* SDL_LoadBMP(const char* file)
+    
+ 
+功能:从一个SDL提供的数据流，加载bmp格式图片
+参数:
+src 数据流指针
+freedst 不为0获取后关闭数据流，为0则相反
+返回值:
+成功 表面指针
+失败 NULL
+备注:
+原型:
+SDL_Surface* SDL_LoadBMP_RW(SDL_RWops* src,
+int freesrc)
+    
+ 
+功能:锁定表面
+参数:
+surface 被锁定表面指针
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_LockSurface(SDL_Surface* surface)
+    
+ 
+功能:进行低层次的位块传输
+参数:
+src 源表面
+srcrect 源矩形
+dst 目标表面
+dstrect 目标矩形
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_LowerBlit(SDL_Surface* src,
+SDL_Rect* srcrect,
+SDL_Surface* dst,
+SDL_Rect* dstrect)
+    
+ 
+功能:进行低层次的表面缩放位块传输
+参数:
+src 源表面
+srcrect 源矩形
+dst 目标表面
+dstrect 目标矩形
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_LowerBlitScaled(SDL_Surface* src,
+SDL_Rect* srcrect,
+SDL_Surface* dst,
+SDL_Rect* dstrect)
+    
+ 
+功能:确定一个表面是否必须锁定访问。
+参数:surface 表面指针
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_MUSTLOCK(SDL_Surface* surface)
+    
+ 
+功能:保存一个表面为bmp图片
+参数:
+surface 表面指针
+file 保存文件
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_SaveBMP(SDL_Surface* surface,
+const char* file)
+    
+ 
+功能:保存表面到一个SDL数据流
+参数:
+surface 表面指针
+dst 数据流指针
+freedst 不为0保存后关闭数据流，为0则相反
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_SaveBMP_RW(SDL_Surface* surface,
+SDL_RWops* dst,
+int freedst)
+    
+ 
+功能:设置裁剪矩形表面
+参数:
+surface 表面指针
+rect 剪裁矩形
+返回值:
+成功SDL_TRUE
+失败 SDL_FALSE
+备注:
+原型:
+SDL_bool SDL_SetClipRect(SDL_Surface* surface,
+const SDL_Rect* rect)
+    
+ 
+功能:设置表面透明度
+参数:
+surface 表面指针
+alpha 透明度
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_SetSurfaceAlphaMod(SDL_Surface* surface,
+Uint8 alpha)
+    
+ 
+功能:设置表面混合模式
+参数:
+surface 表面指针
+blendMode 混合模式
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_SetSurfaceBlendMode(SDL_Surface* surface,
+SDL_BlendMode blendMode)
+    
+ 
+功能:设置表面颜色模式
+参数:
+surface 表面指针
+r,g,b 颜色
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_SetSurfaceColorMod(SDL_Surface* surface,
+Uint8 r,
+Uint8 g,
+Uint8 b)
+    
+ 
+功能:设置表面调色板
+参数:
+surface 表面指针
+palette 调色板指针
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_SetSurfacePalette(SDL_Surface* surface,
+SDL_Palette* palette)
+    
+ 
+功能:设置RLE加速表面
+参数:
+surface 表面指针
+flag 为0关闭加速，非0开启
+返回值:
+返回0表示成功
+失败则返回一个负的错误代码，请使用SDL_GetError（）获取更多信息。
+备注:
+原型:
+int SDL_SetSurfaceRLE(SDL_Surface* surface,
+int flag)
+    
+ 
+功能:解锁表面
+参数:
+surface 表面指针
+返回值:
+备注:
+原型:
+void SDL_UnlockSurface(SDL_Surface* surface)
+    
+ 
+功能:设置表面的颜色键（透明像素）
+参数:
+surface 表面指针
+flag
+SDL_TRUE启用，SDL_FALSE禁用
+key 颜色键，透明象素
+返回值:
+备注:
+原型:
+int SDL_SetColorKey(SDL_Surface* surface,
+int flag,
+Uint32 key)
+    
+    头文件 SDL_syswm.h    
+    枚举
+枚举名:SDL_SYSWM_TYPE
+简介:支持窗口化子系统的枚举
+值:
+SDL_SYSWM_UNKNOWN 未知系统
+SDL_SYSWM_WINDOWS
+微软的Windows
+SDL_SYSWM_X11
+X Window系统
+SDL_SYSWM_DIRECTFB
+DirectFB
+SDL_SYSWM_COCOA
+苹果Mac OS X
+SDL_SYSWM_UIKIT
+苹果iOS
+ 
+结构名:SDL_SysWMmsg
+简介 包含系统相关的窗口管理器消息的结构。
+成员:
+SDL_version version
+包含当前SDL版的SDL_version结构
+SDL_SYSWM_TYPE subsystem
+窗口系统类型,详细参见SDL_SYSWM_TYPE枚举
+int dummy
+未使用（没有特定的系统可用，帮助编译器）
+HWND win.hwnd 该消息的窗口
+UINT win.msg 该消息的类型
+WPARAM win.wParam
+WORD消息参数
+LPARAM win.lParam
+长消息的参数
+XEvent x11.event
+X11事件结构
+DFBEvent dfb.event
+DirectFB的事件
+ 
+    
+    函数
+ 
+功能:获得有关的窗口的具体信息
+参数:
+window 其信息被请求的窗口
+info 一个SDL_SysWMinfo结构,保存窗口信息
+返回值:
+成功 SDL_TRUE
+失败 SDL_FALSE
+原型:
+SDL_bool SDL_GetWindowWMInfo(SDL_Window* window,
+SDL_SysWMinfo* info)
+    
+    示例:
+#include "SDL.h"
+#include "SDL_syswm.h"
+ 
+ 
+int main(int argc, char *argv[]) {
+SDL_Init(0);
+SDL_Window* window = SDL_CreateWindow("",0,0,0,0,SDL_WINDOW_HIDDEN);
+ 
+SDL_SysWMinfo info;
+ 
+SDL_VERSION(&amp;info.version); // initialize info structure with SDL version info
+ 
+if(SDL_GetWindowWMInfo(window,&amp;info)) { // the call returns true on success
+// success
+const char *subsystem = "an unknown system!";
+switch(info.subsystem) {
+case SDL_SYSWM_UNKNOWN: break;
+case SDL_SYSWM_WINDOWS: subsystem = "Microsoft Windows(TM)"; break;
+case SDL_SYSWM_X11: subsystem = "X Window System"; break;
+case SDL_SYSWM_DIRECTFB: subsystem = "DirectFB"; break;
+case SDL_SYSWM_COCOA: subsystem = "Apple OS X"; break;
+case SDL_SYSWM_UIKIT: subsystem = "UIKit"; break;
+}
+SDL_Log("This program is running SDL version %d.%d.%d on %s", 
+(int)info.version.major,
+(int)info.version.minor,
+(int)info.version.patch,
+subsystem);
+ 
+} else {
+// call failed
+SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Couldn't get window information: %s", SDL_GetError());
+}
+ 
+SDL_DestroyWindow(window);
+SDL_Quit();
+ 
+}
+    
+    头文件 SDL_clipboard.h    
+ 
+功能:从剪切板中获取一条utf-8字符串
+参数:
+返回值:
+成功 字符串指针
+失败 NULL
+原型:
+char* SDL_GetClipboardText(void)
+    
+ 
+功能:检查剪贴板中是否有字符串
+参数:
+返回值:
+有 SDL_TRUE
+没有 SDL_FALSE
+原型:
+SDL_bool SDL_HasClipboardText(void)
+    
+ 
+功能:设置一条字符串到剪贴板
+参数:
+text 字符串指针
+返回值:
+成功返回 0
+失败 请用SDL_GetError()获取错误信息
+原型:
+int SDL_SetClipboardText(const char* text)
+    
+    头文件 SDL_events.h    
+    枚举 
+枚举名:SDL_EventType
+值:
+SDL_FIRSTEVENT
+删除（未使用）
+ 
+应用程序事件
+SDL_QUIT
+用户请求的事件
+Android和iOS的事件
+SDL_APP_TERMINATING
+操作系统终止应用
+SDL_APP_LOWMEMORY
+操作系统是内存不足;释放一些
+SDL_APP_WILLENTERBACKGROUND
+应用程序进入后台
+SDL_APP_DIDENTERBACKGROUND
+进入应用背面
+SDL_APP_WILLENTERFOREGROUND
+应用正进入前面
+SDL_APP_DIDENTERFOREGROUND
+进入应用前面
+    
+    窗口事件
+SDL_WINDOWEVENT
+窗口状态变化
+SDL_SYSWMEVENT
+特定的系统事件
+ 
+键盘事件
+SDL_KEYDOWN
+键按下
+SDL_KEYUP
+按键松开
+ 
+SDL_TEXTEDITING
+键盘文字编辑（组成）
+SDL_TEXTINPUT
+键盘文字输入
+ 
+鼠标事件
+SDL_MOUSEMOTION
+鼠标移动
+SDL_MOUSEBUTTONDOWN
+按下鼠标按钮
+SDL_MOUSEBUTTONUP
+释放鼠标按钮
+SDL_MOUSEWHEEL
+鼠标滚轮运动
+ 
+操纵杆事件
+SDL_JOYAXISMOTION
+摇杆轴运动
+SDL_JOYBALLMOTION
+操纵杆轨迹球运动
+SDL_JOYHATMOTION
+摇杆帽位置变化
+SDL_JOYBUTTONDOWN
+操纵杆按钮按下
+SDL_JOYBUTTONUP
+摇杆键发布
+SDL_JOYDEVICEADDED
+摇杆连接
+SDL_JOYDEVICEREMOVED
+断开操纵杆
+ 
+控制器事件
+SDL_CONTROLLERAXISMOTION
+控制轴运动
+SDL_CONTROLLERBUTTONDOWN
+控制按钮被按下
+SDL_CONTROLLERBUTTONUP
+控制按钮发布
+SDL_CONTROLLERDEVICEADDED
+控制器相连
+SDL_CONTROLLERDEVICEREMOVED
+控制器断开连接
+SDL_CONTROLLERDEVICEREMAPPED
+控制器映射更新
+ 
+触摸事件
+SDL_FINGERDOWN
+用户触摸输入装置
+SDL_FINGERUP
+用户停止触摸输入设备
+SDL_FINGERMOTION
+用户拖动手指输入设备
+ 
+手势事件
+SDL_DOLLARGESTURE
+SDL_DOLLARRECORD
+SDL_MULTIGESTURE
+ 
+剪贴板事件
+SDL_CLIPBOARDUPDATE
+改变剪贴板
+ 
+拖放事件
+SDL_DROPFILE
+ 
+这些是供您使用，并应分配SDL_RegisterEvents（）
+SDL_USEREVENT
+一个用户指定的事件
+SDL_LASTEVENT
+仅适用于边界内部数组
+    
+    例子:
+SDL_Event e;
+while (SDL_PollEvent(&amp;e) {
+if (e.type == SDL_KEYDOWN) {
+printf("User just pressed down a key!");
+}
+}
+    
+    结构名:SDL_DollarGestureEvent
+简介 包含复杂的手势事件信息的结构
+成员:
+Uint32 type 类型
+Uint32 timestamp 事件的时间戳
+SDL_TouchID touchId 触摸设备序列
+SDL_GestureID gestureId 描述
+Uint32 numFingers 描述
+float error 错误描述
+float x
+//0 ~1。切换到屏幕COORDS
+float y 描述
+    
+    结构名: SDL_DropEvent
+简介:
+包含用于请求一个文件系统打开一个文件的结构
+成员:
+Uint32 type 事件类型
+Uint32 timestamp 事件的时间戳
+char* file 文件名，它应该用SDL_free（）释放
+    
+    结构名:SDL_Event
+简介 包含不同事件类型的结构
+成员:
+Uint32 type 事件类型，所有事件都可用
+SDL_CommonEvent common 常见的事件数据
+SDL_WindowEvent window 窗口事件
+SDL_KeyboardEvent key 键盘事件
+    
+    SDL_TextEditingEvent edit 文本编辑事件
+SDL_TextInputEvent text 文本输入事件
+SDL_MouseMotionEvent motion 鼠标移动事件
+SDL_MouseButtonEvent button 鼠标按钮事件
+SDL_MouseWheelEvent wheel
+鼠标滚轮事件
+SDL_JoyAxisEvent jaxis 
+操纵杆轴事件数据
+SDL_JoyBallEvent jball
+操纵杆球事件数据
+SDL_JoyHatEvent jhat
+摇杆帽事件数据
+SDL_JoyButtonEvent jbutton
+操纵杆按钮事件数据
+SDL_JoyDeviceEvent jdevice
+操纵杆设备事件数据
+SDL_ControllerAxisEvent caxis
+游戏手柄轴事件数据
+SDL_ControllerButtonEvent cbutton
+游戏控制器按钮事件数据
+SDL_ControllerDeviceEvent cdevice
+游戏控制器设备的事件数据
+SDL_QuitEvent quit
+退出请求事件数据
+SDL_UserEvent user
+自定义事件数据
+SDL_SysWMEvent syswm
+系统相关的窗口事件数据
+SDL_TouchFingerEvent tfinger
+手指触碰事件数据
+SDL_MultiGestureEvent mgesture
+多手指手势数据
+SDL_DollarGestureEvent dgesture
+UINT32
+类型
+事件类型，所有活动共享
+SDL_CommonEvent
+常见
+常见的事件数据
+SDL_WindowEvent
+窗口
+窗口事件数据
+SDL_KeyboardEvent
+关键
+键盘事件数据
+SDL_TextEditingEvent
+编辑
+文本编辑事件数据
+SDL_TextInputEvent
+文本
+文本输入事件数据
+SDL_MouseMotionEvent
+运动
+鼠标移动事件数据
+SDL_MouseButtonEvent
+钮
+鼠标按钮的事件数据
+SDL_MouseWheelEvent
+轮
+鼠标滚轮事件数据
+SDL_JoyAxisEvent
+jaxis
+操纵杆轴事件数据
+SDL_JoyBallEvent
+jball
+操纵杆球事件数据
+SDL_JoyHatEvent
+与jHat
+摇杆帽事件数据
+SDL_JoyButtonEvent
+JButton的
+操纵杆按钮事件数据
+SDL_JoyDeviceEvent
+jdevice
+操纵杆设备的事件数据
+SDL_ControllerAxisEvent
+CAXIS
+游戏手柄轴事件数据
+SDL_ControllerButtonEvent
+CButton的
+游戏控制器按钮事件数据
+SDL_ControllerDeviceEvent
+cdevice
+游戏控制器设备的事件数据
+SDL_QuitEvent
+退出
+退出请求事件数据
+SDL_USEREVENT
+用户
+自定义事件数据
+SDL_SysWMEvent
+syswm
+系统相关的窗口事件数据
+SDL_TouchFingerEvent
+tfinger
+手指触碰事件数据
+SDL_MultiGestureEvent
+mgesture
+多手指手势数据
+SDL_DollarGestureEvent
+dgesture
+多手指手势数据
+SDL_DropEvent
+多手指手势数据
+SDL_DropEvent drop
+拖放事件数据
+    
+    结构名:SDL_JoyAxisEvent
+简介:包含摇杆轴运动事件信息的结构。
+成员:
+Uint32 type 事件类型
+Uint32 timestamp 时间戳
+SDL_JoystickID which 摇杆事件索引
+Uint8 axis
+Uint8 padding1
+Uint8 padding2
+Uint8 padding3
+Sint16 value 轴的当前位置,取值范围: -32768 to 32767
+Uint16 padding4
+ 
+    
+    结构名 :SDL_JoyBallEvent
+简介 包含操纵杆轨迹球移动事件信息的结构
+Uint32 type 事件类型
+Uint32 timestamp 时间戳
+SDL_JoystickID which 事件操纵杆的索引
+Uint8 ball 轨迹球
+Uint8 padding1
+Uint8 padding2
+Uint8 padding3
+Sint16 xrel 在X方向上的相对运动
+Sint16 yrel
+在Y方向上的相对运动
+    
+    结构名:SDL_JoyButtonEvent
+简介 :包含操纵杆按钮事件信息的结构。
+成员:
+Uint32 type 事件类型
+Uint32 timestamp 时间戳
+SDL_JoystickID which 事件操纵杆的索引
+Uint8 button 按钮的索引
+Uint8 state 按钮的状态
+Uint8 padding1
+Uint8 padding2
+    
+    结构名:SDL_JoyHatEvent
+简介 包含摇杆帽的位置变化事件信息的结构。
+成员
+Uint32 type 事件类型
+Uint32 timestamp 时间戳
+SDL_JoystickID which 事件操纵杆的索引
+Uint8 hat 摇杆帽的索引
+Uint8 value 摇杆帽的新位置
+Uint8 padding1
+Uint8 padding2
+    
+    SDL_KeyboardEvent
+ 
+Uint32 type 事件类型
+Uint32 timestamp 时间戳
+Uint32 windowID 有键盘焦点的窗口
+Uint8 state 键的状态
+Uint8 repeat 重复，非0值
+Uint8 padding2
+Uint8 padding3
+SDL_Keysym keysym 键值
+    
+    SDL_MouseMotionEvent
+包含鼠标移动事件信息的结构。
+UINT32 type 事件类型
+UINT32 timestamp 事件的时间标记
+UINT32 WINDOWID
+鼠标焦点的窗口
+UINT32 which SDL_TOUCH_MOUSEID
+UINT32 state 按钮的状态
+SINT32 x
+X坐标，相对于窗口
+SINT32 y
+Y坐标，相对于窗口
+SINT32 xrel
+在X方向上的相对运动
+SINT32 yrel
+在Y方向上的相对运动
+    
+    SDL_MouseButtonEvent
+包含鼠标按钮事件信息的结构。
+UINT32 type 事件类型 SDL_MOUSEBUTTONDOWN或SDL_MOUSEBUTTONUP
+UINT32 timestamp
+事件的时间标记
+UINT32 WINDOWID
+鼠标焦点的窗口
+UINT32 which
+鼠标ID
+UINT8 button 按钮
+UINT8 state 按钮的状态 SDL_PRESSED或SDL_RELEASED
+UINT8 padding1
+UINT8 padding2
+SINT32 x
+X坐标，相对于窗口
+SINT32 y
+Y坐标，相对于窗口
+ 
+SDL_MouseWheelEvent
+包含鼠标滚轮事件信息的结构。
+UINT32 type SDL_MOUSEWHEEL
+UINT32 timestamp 事件的时间标记
+UINT32 WINDOWID 鼠标焦点的窗口
+UINT32 which
+鼠标ID SDL_TOUCH_MOUSEID;
+SINT32 x 水平滚动
+SINT32 y 垂直滚动
+    
+    SDL_MultiGestureEvent
+包含多个手指的手势事件信息的结构
+UINT32 type SDL_MULTIGESTURE
+UINT32 timestamp 
+事件的时间标记
+SDL_TouchID touchId 触摸设备索引
+float dTheta 描述
+float dDist 描述
+float x 描述
+float y 描述
+UINT16 numFingers 描述
+UINT16 padding
+ 
+SDL_QuitEvent
+包含了“退出请求”事件的结构。
+Uint32 type 值为SDL_QUIT
+Uint32 timestamp 时间戳
+SDL_SysWMEvent
+它包含一个视频驱动程序相关的系统事件的结构。
+UINT32 type SDL_SYSWMEVENT
+UINT32 timestamp 事件的时间标记
+SDL_SysWMmsg * msg
+驱动程序相关的数据
+ 
+    
+    SDL_TextEditingEvent
+包含键盘的文本编辑事件信息的结构。
+Uint32 type 值为SDL_TEXTEDITING
+Uint32 timestamp 时间戳
+Uint32 windowID
+具有键盘焦点的窗口
+char text 字符串
+Sint32 start 开始位置
+Sint32 length 长度
+    
+    SDL_TextInputEvent
+包含键盘文本输入事件信息的结构。
+Uint32 type SDL_TEXTINPUT
+Uint32 timestamp 时间戳
+Uint32 windowID
+有键盘输入焦点的窗口
+char text 输入的字符串，utf-8编码
+    
+    SDL_TouchFingerEvent
+包含手指触摸事件信息的结构。
+ 
+    
+    Uint32 type
+SDL_FINGERMOTION, SDL_FINGERDOWN, 或 SDL_FINGERUP
+Uint32 timestamp 时间戳
+SDL_TouchID 触摸索引
+SDL_FingerID 手指索引
+float x 触摸事件x轴的坐标
+float y 触摸事件y轴的坐标
+float dx 移动于x轴的距离
+float dy 移动于y轴的距离
+float pressure 施加的压力值
+    
+    SDL_USEREVENT
+它包含一个应用程序定义的事件类型的结构。
+UINT32 type
+从SDL_RegisterEvents得到的值
+UINT32 timestamp 
+事件的时间标记
+UINT32 WINDOWID
+相关的窗口
+SINT32 code
+用户定义的事件代码
+void* data1
+用户定义的数据指针1
+void* data2
+用户定义的数据指针2
+代码示例
+Uint32 myEventType = SDL_RegisterEvents(1);
+if (myEventType != ((Uint32)-1)) {
+SDL_Event event;
+SDL_zero(event);
+event.type = myEventType;
+event.user.code = my_event_code;
+event.user.data1 = significant_data;
+event.user.data2 = 0;
+SDL_PushEvent(&amp;event);
+}
+    
+    SDL_WindowEvent
+UINT32 type
+取值SDL_WINDOWEVENT
+UINT32 timestamp 事件的时间标记
+UINT32 WINDOWID
+相关的窗口
+UINT8 event
+SDL_WindowEventID
+UINT8 padding1
+UINT8 padding2
+UINT8 padding3
+SINT32 data1
+事件相关的数据
+SINT32 data2
+事件相关的数据
+代码示例
+void PrintEvent(const SDL_Event * event)
+{
+if (event-&gt;type == SDL_WINDOWEVENT) {
+switch (event-&gt;window.event) {
+case SDL_WINDOWEVENT_SHOWN:
+SDL_Log("Window %d shown", event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_HIDDEN:
+SDL_Log("Window %d hidden", event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_EXPOSED:
+SDL_Log("Window %d exposed", event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_MOVED:
+SDL_Log("Window %d moved to %d,%d",
+event-&gt;window.windowID, event-&gt;window.data1,
+event-&gt;window.data2);
+break;
+case SDL_WINDOWEVENT_RESIZED:
+SDL_Log("Window %d resized to %dx%d",
+event-&gt;window.windowID, event-&gt;window.data1,
+event-&gt;window.data2);
+break;
+case SDL_WINDOWEVENT_MINIMIZED:
+SDL_Log("Window %d minimized", event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_MAXIMIZED:
+SDL_Log("Window %d maximized", event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_RESTORED:
+SDL_Log("Window %d restored", event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_ENTER:
+SDL_Log("Mouse entered window %d",
+event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_LEAVE:
+SDL_Log("Mouse left window %d", event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_FOCUS_GAINED:
+SDL_Log("Window %d gained keyboard focus",
+event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_FOCUS_LOST:
+SDL_Log("Window %d lost keyboard focus",
+event-&gt;window.windowID);
+break;
+case SDL_WINDOWEVENT_CLOSE:
+SDL_Log("Window %d closed", event-&gt;window.windowID);
+break;
+default:
+SDL_Log("Window %d got unknown event %d",
+event-&gt;window.windowID, event-&gt;window.event);
+break;
+}
+}
+}
+    
+    函数
+ 
+功能:使用此函数来添加一个回调，当一个事件被添加到事件队列中被触发
+参数:
+filter 当一个事件发生时要调用的函数
+userdata 用户数据
+返回值:
+备注:
+原型:
+void SDL_AddEventWatch(SDL_EventFilter filter,
+void* userdata)
+ 
+    
+ 
+功能:使用这个函数来删除事件回
+参数:
+filter 当一个事件发生时要调用的函数
+userdata 用户数据
+返回值:
+备注:
+原型:
+void SDL_DelEventWatch(SDL_EventFilter filter,
+void* userdata)
+    
+ 
+功能:利用此函数的类型来设置处理事件的状态
+参数:
+type 事件的类型，见SDL_EventType
+state 如何处理该事件，见备注详细信息
+返回值:
+返回SDL_DISABLE或SDL_ENABLE
+备注:
+state可以是下列任何一项：
+-1
+SDL_QUERY
+返回指定事件的当前处理状态
+ 
+0
+SDL_IGNORE（又名SDL_DISABLE）
+该事件将被自动从事件队列丢弃，不会被过滤
+ 
+1
+SDL_ENABLE
+该事件将被正常处理
+原型:
+Uint8 SDL_EventState(Uint32 type,
+int state)
+    
+ 
+功能:
+使用此函数可对当前事件队列中运行特定的过滤功能
+参数:
+filter 当一个事件发生时要调用的函数
+userdata 用户数据
+返回值:
+备注:
+原型:
+void SDL_FilterEvents(SDL_EventFilter filter, void* userdata)
+    
+ 
+功能:
+使用此函数可从事件队列中清除事件
+参数:
+type 要清除事件的类型，见SDL_EventType的详细信息
+返回值:
+备注:
+原型:
+void SDL_FlushEvent(Uint32 type)
+    
+ 
+功能:
+使用此函数可从事件队列中清除多个事件。
+参数:
+minType 清除的最小事件类型，见SDL_EventType的详细信息
+maxType 清除的最大事件类型，见SDL_EventType的详细信息
+返回值:
+备注:
+原型:
+void SDL_FlushEvents(Uint32 minType,
+Uint32 maxType)
+    
+ 
+功能:
+使用此函数来查询当前的事件过滤器。
+参数:
+filter 当前的回调函数将存储在这里
+userdata 传递给当前的事件过滤器的指针将被保存在这里
+返回值:
+成功 SDL_TRUE
+失败 SDL_FALSE
+备注:
+原型:
+SDL_bool SDL_GetEventFilter(SDL_EventFilter* filter,
+void** userdata)
+    
+ 
+功能:
+使用此函数来检查事件队列中的某些事件类型的存在。
+参数:
+要查询的事件类型
+返回值:
+成功 SDL_TRUE
+失败 SDL_FALSE
+备注:
+原型:
+SDL_bool SDL_HasEvent(Uint32 type)
+    
+ 
+功能:
+使用此函数来检查一系列事件队列中的事件类型的存在。
+参数:
+minType
+要查询的最低类型事件;见SDL_EventType的详细信息
+maxType
+要查询的最高类型事件;见SDL_EventType的详细信息
+返回值:
+成功 SDL_TRUE
+失败 SDL_FALSE
+备注:
+原型:
+SDL_bool SDL_HasEvents(Uint32 minType,
+Uint32 maxType)
+    
+ 
+功能:
+使用此功能来检查事件队列中的消息，并返回它们。
+参数:
+events 事件
+numevents 事件数量
+action 要采取的行动，见备注
+minType 事件类型的最小值
+maxType 事件类型的最大值
+返回值:
+成功返回实际存储的事件数量
+失败返回一个为负的错误代码
+备注:
+action可以是以下任一操作（从枚举SDL_eventaction也可以看到）
+SDL_ADDEVENT
+numevents事件将被添加到事件队列的后面
+SDL_PEEKEVENT
+到在事件队列的前面numevents事件时，指定的最小和最大事件类型范围内，将被返回，不会被从队列中删除
+SDL_GETEVENT
+到在事件队列的前面numevents事件时，指定的最小和最大事件类型范围内，将被返回，将被从队列中删除
+ 
+如果action是SDL_ADDEVENT，最多numevents事件将被添加到事件队列的后面。
+ 
+如果action是SDL_PEEKEVENT，最多在事件队列的前面numevents事件时，指定的最小和最大事件类型范围内，将被返回，不会被从队列中删除。
+ 
+如果action是SDL_GETEVENT，最多在事件队列的前面numevents事件时，指定的最小和最大事件类型范围内，将被返回，将被从队列中删除
+在2.0以下版本中，您可能必须在调用此函数之前调用SDL_PumpEvents（）。否则，当你调用SDL_PeepEvents（）的事件可能还没有准备好进行过滤。
+原型:
+int SDL_PeepEvents(SDL_Event* events,
+int numevents,
+SDL_eventaction action,
+Uint32 minType,
+Uint32 maxType)
+ 
+    
+ 
+功能:使用此函数来轮询当前挂起的事件。
+参数:
+event 事件,SDL_Event结构
+返回值:
+有一个可用事件返回1
+没有则返回 0
+备注:
+原型:
+int SDL_PollEvent(SDL_Event* event)
+    
+ 
+功能:使用此函数可从事件循环，收集从输入设备的事件。
+参数:
+返回值:
+备注:
+原型:
+void SDL_PumpEvents(void)
+    
+ 
+功能:使用此函数可将事件添加到事件队列。
+参数:
+event 被添加到队列中的事件，参见SDL_Event
+返回值:
+成功，则返回0，如果返回1的情况下，则过滤掉，或者在失败时返回一个负的错误代码，请SDL_GetError（）获取更多信息。一个常见的错误原因是事件队列已满。
+备注:
+原型:
+int SDL_PushEvent(SDL_Event* event)
+    
+ 
+功能:查询SDL_Quit是否在队列中
+参数:
+返回值:
+在 SDL_TRUE
+不在 SDL_FALSE
+备注:
+原型:
+SDL_bool SDL_QuitRequested(void)
+    
+ 
+功能:
+使用此函数来分配一组用户定义的事件
+参数:
+numevents 要分配的事件数
+返回值:
+成功 开始事件编号
+失败 -1
+备注:
+原型:
+Uint32 SDL_RegisterEvents(int numevents)
+例子:
+Uint32 myEventType = SDL_RegisterEvents(1);
+if (myEventType != ((Uint32)-1)) {
+SDL_Event event;
+SDL_zero(event);
+event.type = myEventType;
+event.user.code = my_event_code;
+event.user.data1 = significant_data;
+event.user.data2 = 0;
+SDL_PushEvent(&amp;event);
+}
+    
+ 
+功能:使用此函数可设置过滤器来处理所有的事件
+参数:
+filter 当一个事件发生时要调用的函数
+userdata 用户数据，传递给该函数的指针
+返回值:
+备注:
+原型:
+void SDL_SetEventFilter(SDL_EventFilter filter,
+void* userdata)
+    
+ 
+功能:使用此函数无限期地等待下一个可用的事件
+参数:
+event 事件
+返回值:
+返回 1 成功
+返回 0 失败
+备注:
+原型:
+int SDL_WaitEvent(SDL_Event* event)
+    
+ 
+功能:使用此函数要等到指定的超时（以毫秒为单位）为下一个可用的事件。
+参数:
+event 事件
+timeout 超时的最大毫秒数，以等待下一个可用的事件
+返回值:
+返回 1 成功
+返回 0 失败
+备注:
+原型:
+int SDL_WaitEventTimeout(SDL_Event* event,
+int timeout)
+    
+    SDL_Keymod枚举
+KMOD_NONE 0（无修饰符适用）
+KMOD_LSHIFT 左Shift键是按下
+KMOD_RSHIFT 右Shift键是按下
+KMOD_LCTRL 左Ctrl（控制）键被按下
+KMOD_RCTRL
+右边的Ctrl（控制）键被按下
+KMOD_LALT 左边的Alt键是向下
+KMOD_RALT 右边的Alt键被按下
+KMOD_LGUI 左边的图形用户界面键（通常是Windows键）关闭
+KMOD_RGUI
+正确的图形用户界面键（通常是Windows键）关闭
+KMOD_NUM Num Lock键（可能位于一个扩展键盘上）
+KMOD_CAPS 大写锁定键被按下
+KMOD_MODE AltGr键是按下
+    
+    /*****
+KMOD_CTRL
+（KMOD_LCTRL | KMOD_RCTRL）
+KMOD_SHIFT
+（KMOD_LSHIFT | KMOD_RSHIFT）
+KMOD_ALT
+（KMOD_LALT | KMOD_RALT）
+KMOD_GUI
+（KMOD_LGUI | KMOD_RGUI）
+KMOD_RESERVED
+保留为将来使用
+ 
+*****/
+    
+    SDL_Keysym
+包含关键事件的结构。
+SDL_Scancode scancode SDL的物理键码
+SDL_Keycode sym
+SDL的虚拟键码
+Uint16 mod 按键模式
+Uint32 unused 未使用
+    
+功能:从一个可读的键名获取其键
+参数:
+name 可读的键名
+返回值:
+成功 返回键码
+失败 SDLK_UNKNOWN
+备注:
+原型:
+SDL_Keycode SDL_GetKeyFromName(const char* name)
+    
+功能:从一个物理键码获得其虚拟键码
+参数:
+scancode 物理键码
+返回值:
+成功 返回键码
+失败 SDLK_UNKNOWN
+备注:
+原型:
+SDL_Keycode SDL_GetKeyFromScancode(SDL_Scancode scancode)
+    
+功能:获取键名
+参数:
+key 虚拟键码
+返回值:
+成功 返回一个包含其键名的字符串
+失败 NULL
+备注:
+原型:
+const char* SDL_GetKeyName(SDL_Keycode key)
+    
+功能:获取键盘当前状态
+参数:
+numkeys 接收到返回的数组的长度
+返回值:
+返回一个指针，指向一个数组
+值1表示被按下，0则不是
+备注:
+原型:
+const Uint8* SDL_GetKeyboardState(int* numkeys)
+例子
+const Uint8 *state = SDL_GetKeyboardState(NULL);
+if ( state[SDL_SCANCODE_RETURN] ) {
+printf("&lt;RETURN&gt; is pressed.");
+}
+    
+功能:获取当前功能键状态
+参数:
+返回值:
+返回功能键状态
+备注:
+原型:
+SDL_Keymod SDL_GetModState(void)
+    
+功能:获取其虚拟键码对应的物理键码
+参数:
+key 虚拟键码
+返回值:
+物理键码
+备注:
+原型:
+SDL_Scancode SDL_GetScancodeFromKey(SDL_Keycode key)
+    
+功能:从一个可读的键名获取其物理键码
+参数:
+name 可读名称字符串
+返回值:
+物理键码
+备注:
+原型:
+SDL_Scancode SDL_GetScancodeFromName(const char* name)
+    
+功能:从一个物理键码获取可读的键名
+参数:
+scancode 物理键码
+返回值:
+一个可读键名字符串
+备注:
+原型:
+const char* SDL_GetScancodeName(SDL_Scancode scancode)
+    
+功能:设置当前的功能键状态
+参数:modstate 功能键状态，参见SDL_Keymod
+返回值:
+备注:
+原型:
+void SDL_SetModState(SDL_Keymod modstate)
+    
+功能:设置文本输入区域
+参数:
+rect 输入区域
+返回值:
+备注:
+原型:
+void SDL_SetTextInputRect(SDL_Rect* rect)
+    
+功能:开始输入文本
+参数:
+返回值:
+备注:
+原型:
+void SDL_StartTextInput(void)
+    
+功能:结束输入文本
+参数:
+返回值:
+备注:
+原型:
+void SDL_StopTextInput(void)
+    
+功能:创建一个颜色的光标
+参数:
+surface 光标图像
+hot_x,hot_y 光标热点值
+返回值:
+成功返回 光标
+失败返回 NULL
+原型;
+SDL_Cursor* SDL_CreateColorCursor(SDL_Surface* surface,
+int hot_x,
+int hot_y)
+    
+功能:使用此函数来创建使用指定的位图数据和掩码的光标（以MSB格式）
+参数:
+data
+对于光标的每个像素的颜色值
+mask
+对于光标的每个像素的掩码值;
+w
+光标的宽度
+?
+光标的高度
+hot_x
+光标的左上角相对于实际的鼠标位置的X轴位置
+hot_y
+光标的左上角相对于实际的鼠标位置的Y轴位置
+返回值:
+成功返回一个新的
+光标
+失败 NULL
+原型;
+SDL_Cursor* SDL_CreateCursor(const Uint8* data,
+const Uint8* mask,
+int w,
+int h,
+int hot_x,
+int hot_y)
+    
+    例子:
+/* Stolen from the mailing list */
+/* Creates a new mouse cursor from an XPM */
+/* XPM */
+static const char *arrow[] = {
+/* width height num_colors chars_per_pixel */
+" 32 32 3 1",
+/* colors */
+"X c #000000",
+". c #ffffff",
+" c None",
+/* pixels */
+"X ",
+"XX ",
+"X.X ",
+"X..X ",
+"X...X ",
+"X....X ",
+"X.....X ",
+"X......X ",
+"X.......X ",
+"X........X ",
+"X.....XXXXX ",
+"X..X..X ",
+"X.X X..X ",
+"XX X..X ",
+"X X..X ",
+" X..X ",
+" X..X ",
+" X..X ",
+" XX
+",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+" ",
+"0,0"
+};
+static SDL_Cursor *init_system_cursor(const char *image[])
+{
+int i, row, col;
+Uint8 data[4*32];
+Uint8 mask[4*32];
+int hot_x, hot_y;
+i = -1;
+for ( row=0; row&lt;32; ++row ) {
+for ( col=0; col&lt;32; ++col ) {
+if ( col % 8 ) {
+data[i] &lt;&lt;= 1;
+mask[i] &lt;&lt;= 1;
+} else {
+++i;
+data[i] = mask[i] = 0;
+}
+switch (image[4+row][col]) {
+case 'X':
+data[i] |= 0x01;
+mask[i] |= 0x01;
+break;
+case '.':
+mask[i] |= 0x01;
+break;
+case ' ':
+break;
+}
+}
+}
+sscanf(image[4+row], "%d,%d", &amp;hot_x, &amp;hot_y);
+return SDL_CreateCursor(data, mask, 32, 32, hot_x, hot_y);
+}
+    
+功能:释放一个鼠标指针
+参数:
+cursor 鼠标指针
+返回值:
+原型;
+void SDL_FreeCursor(SDL_Cursor* cursor)
+    
+功能:获取当前活动的鼠标指针
+参数:
+返回值:
+成功 鼠标指针
+失败 NULL
+原型;
+SDL_Cursor* SDL_GetCursor(void)
+    
+功能:获得当前有鼠标焦点的窗口。
+参数:
+返回值:
+成功 窗口指针
+失败 NULL
+原型;
+SDL_Window* SDL_GetMouseFocus(void)
+    
+功能:获取鼠标状态
+参数:
+x,y 鼠标坐标指针
+返回值:
+返回当前按键状态的32位键位掩码
+原型;
+Uint32 SDL_GetMouseState(int* x,
+int* y)
+例子:
+SDL_PumpEvents();
+if(SDL_GetMouseState(NULL, NULL)&amp;SDL_BUTTON(1))
+printf("Mouse Button 1(left) is pressed.");
+    
+功能:使用此功能来查询相对鼠标模式是否开启
+参数:
+返回值:
+成功 SDL_TURE 
+失败 SDL_FALSE
+原型;
+SDL_bool SDL_GetRelativeMouseMode(void)
+    
+功能:使用此功能来检索鼠标的相对状态。
+参数:x,y 鼠标坐标指针
+返回值:
+返回当前按键状态的32位键位掩码
+原型;
+Uint32 SDL_GetRelativeMouseState(int* x,
+int* y)
+    
+功能:设置当前活动的鼠标
+参数:cursor 鼠标指针
+返回值:
+原型;
+void SDL_SetCursor(SDL_Cursor* cursor)
+    
+功能:使用此功能来打开或关闭相对鼠标模式
+参数:
+enabled 
+SDL_TURE 开启 SDL_FALSE 关闭
+返回值:
+成功返回 0
+失败返回一个为负的错误代码
+原型;
+int SDL_SetRelativeMouseMode(SDL_bool enabled)
+    
+功能:设置光标是否显示
+参数:
+1，显示光标，0隐藏它，-1查询当前状态
+返回值:
+1 光标显示
+0 光标隐藏
+原型;
+int SDL_ShowCursor(int toggle)
+    
+功能:使用此功能可将鼠标移动到窗口内的指定位置
+参数:
+w 窗口指针
+x,y 坐标
+返回值:
+原型;
+void SDL_WarpMouseInWindow(SDL_Window* window,
+int x,
+int y)
+    
