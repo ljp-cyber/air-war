@@ -1,5 +1,5 @@
+
 #include "ObjFactory.h"
-#include "Data.h"
 
 #define CACHE_SIZE 200
 
@@ -13,7 +13,7 @@ static Plan* plans[CACHE_SIZE]={0};
 static int plansLen=0;
 
 static Step* steps1[CACHE_SIZE]={0};
-static int steps1Len=stepCount;//静态的
+static int steps1Len;//静态的
 
 static Step* steps[CACHE_SIZE]={0};
 static int stepsLen=0;
@@ -50,6 +50,7 @@ void toStrFac(char* str){
 }
 
 void objFtyInit(int w,int h,int fps){
+	steps1Len=stepCount;//静态的
 	dataInit(w,h,fps);
 	for(int i=0;i<steps1Len;i++){
 		if(isStatic1(i)){

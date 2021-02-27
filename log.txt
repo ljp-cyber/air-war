@@ -1,1 +1,1 @@
-[02:22:23]temp.c,func=main,line=32: start
+[09:34:11]temp.c,func=main,line=32: start

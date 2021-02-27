@@ -1,4 +1,6 @@
 #include "fp.c"
+#include "game/obj/data.h"
+
 
 char bgPath[] = "img/bg1_1.jpg";
 char weaPath[] = "img/wea1_1.png";
@@ -10,6 +12,7 @@ SDL_Texture* objTex;
 SDL_Rect* bgRect;
 SDL_Rect* weaRect;
 SDL_Rect* objRect;
+SDL_Rect** objRects;
 int bgMove=0;
 
 void initImg(){
@@ -22,6 +25,11 @@ void gameSDL_init(){
 	bgRect=mySDL_NewRect(0,1800,500,1000);
 	weaRect=mySDL_NewRect(385,85,45,45);
 	objRect=mySDL_NewRect(245,230,135,90);
+	objRects=(SDL_Rect**)malloc(sizeof(void*)*objCount);
+	for(int i=0;i<objCount;i++){
+		objRects[i]=mySDL_NewRect(objRectData[i][0],
+		objRectData[i][1],objRectData[i][2],objRectData[i][3]);
+	}
 	mySDL_Init();
 	initImg();
 }
@@ -58,7 +66,7 @@ void drawGame(QTreeNode * root) {
         	SDL_RenderCopy(ren, weaTex, weaRect, &rect);
         	break;
       	}case 2:{       
-        	SDL_RenderCopy(ren, weaTex, weaRect, &rect);
+        	SDL_RenderCopy(ren, weaTex, objRects[2], &rect);
       	}
       }  
       curNode = curNode->next;
